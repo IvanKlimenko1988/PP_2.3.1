@@ -1,16 +1,14 @@
 package web.dao;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class CarDAO {
     private List<Car> cars;
-
-    private List<Car> countCars;
 
     {
         cars = new ArrayList<>();
@@ -27,13 +25,13 @@ public class CarDAO {
     }
 
     public List<Car> showCountCars(int count) {
-        countCars = new ArrayList<>();
+        List<Car> result = new ArrayList<>();
         if (count > 5) {
             return getCars();
         }
         for (int i = 0; i < count; i++) {
-            countCars.add(cars.get(i));
+            result.add(cars.get(i));
         }
-        return countCars;
+        return result;
     }
 }
