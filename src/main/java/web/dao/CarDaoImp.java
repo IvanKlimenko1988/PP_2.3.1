@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CarDAO {
+public class CarDaoImp implements CarDao {
     private List<Car> cars;
 
     {
@@ -20,14 +20,11 @@ public class CarDAO {
         cars.add(new Car("Ford", "gray", 8));
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
+    @Override
     public List<Car> showCountCars(int count) {
         List<Car> result = new ArrayList<>();
         if (count > 5) {
-            return getCars();
+            return cars;
         }
         for (int i = 0; i < count; i++) {
             result.add(cars.get(i));
