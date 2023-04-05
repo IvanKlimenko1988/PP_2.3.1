@@ -25,11 +25,11 @@ public class UsersController {
     public String showAllUsers(Model model) {
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("allUsers", allUsers);
-        return "user/index";
+        return "user/users";
     }
 
     @GetMapping("/add")
-    public String addNewUser(Model model) {
+    public String showUserForm(Model model) {
         model.addAttribute("user", new User());
         return "user/user-info";
     }
@@ -49,7 +49,7 @@ public class UsersController {
     }
 
     @GetMapping("user-update/{id}")
-    public String userUserForm(@PathVariable("id") int id, Model model) {
+    public String getUserForm(@PathVariable("id") int id, Model model) {
         User user = userService.getById(id);
         model.addAttribute("user", user);
         return "user/edit";
